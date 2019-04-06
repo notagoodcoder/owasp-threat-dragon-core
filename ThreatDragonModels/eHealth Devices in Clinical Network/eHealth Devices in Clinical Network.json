@@ -36,23 +36,103 @@
               "angle": 0,
               "id": "325d6101-f63d-48b0-9783-e97171a7a310",
               "z": 2,
-              "hasOpenThreats": false,
+              "hasOpenThreats": true,
               "isAIPSecHostProcess": false,
               "isASwitchingProcess": true,
               "privilegeLevel": "Restricted",
-              "threats": [],
-              "privilegeLevelForProcess": false,
+              "threats": [
+                {
+                  "ruleId": "0.3",
+                  "title": "CDP Manipulation",
+                  "type": "Information disclosure",
+                  "status": "Open",
+                  "severity": "High",
+                  "description": "CDP Manipulation: CDP packets are enabled on all interfaces by default on Cisco switches and they are transmitted in clear text which allows an attacker to analyze the packets and gain a wealth of information about the network device then the attacker can use this information to execute a known vulnerability against the device platform.",
+                  "mitigation": "Solution is to disable CDP on non-management interfaces.",
+                  "references": []
+                },
+                {
+                  "ruleId": "0.4",
+                  "title": "MAC Flooding",
+                  "type": "Information disclosure",
+                  "status": "Open",
+                  "severity": "High",
+                  "description": "MAC Flooding: Here the attacker floods the CAM table with MAC addresses more than the switch can store which leads to the switch operating as hub giving the attacker the opportunity to sniff all traffic on the segment.",
+                  "mitigation": "Configuring Port Security: It involves limiting the NO. of MACs allowed through a port and can also specify what is the MAC/MACs are. The switch port have to be in access mode, when a violation occurs one of 3 actions is taken based on your configuration (shutdown, protect or restrict). The default action is to shut down the port and a log message will appear, protect means ignore the violated MAC but there is no way to tell us that a violation had occurred, restrict is the same as protect but it adds a counter to the violation counter and a log message will appear also. If a port is shut down due to violation it has to be manually re opened using the shutdown and no shutdown commands in the same sequence or using the (config) #errdisablerecovery cause security-violation then to set the recover interval (config )#errdisablerecovery interval {time in sec} and to verify the error disable recovery state #sh errdisablerecovery.ii- Port Base Authentication or 80",
+                  "references": []
+                },
+                {
+                  "ruleId": "0.5",
+                  "title": "VLAN Based Attacks",
+                  "type": "Information disclosure",
+                  "status": "Open",
+                  "severity": "High",
+                  "description": "VLAN hopping: Is when a station is able to access VLAN other than its own. This can be done through one of the following: A- Switch spoofing:A PC will claim to establish a trunk link between itself and the switch and gain all the VLAN informations trying to get benefit of the switch default interfaces state (dynamic auto/desirable).802.11 Double tagging: Here the attacker/computer double tags the frame with the native VLAN on its trunk link and the second tag is for the destined victim VLAN, when the frame reaches the first switch it's rips off the first tag and forward it to all the trunk links configured for the native VLAN and when it reaches the second switch it will see the second tag and forward the fame to the victim VLAN.",
+                  "mitigation": "VLAN Hopping:  Is to Disable the DTP messages on trunk ports (using no negotiate),and avoid the switch defaults (dynamic auto/desirable) regarding trunk links as possible, a better approach is to hardcode the ports. ii-Configure all the ports that should connect to end stations as access, assign them to an unused VLAN and shut them down. Double Tagging:I- The same steps as the switch spoofing. ii-Configuring VACL (VLAN Access ControlList). iii- Private VLAN, PVLANs allows you to divide a VLAN into secondary VLANs,letting you isolate a set of ports from other ports within the same VLAN, we create a primary VLAN and a secondary VLANs as desired, we can have one isolated per primary but we can have as many ports in the isolated as desired, private VLAN can only be configured on switches in transparent VTP mode, ports within private VLAN can be one of three: - Community: communicates with other community ports and promiscuous ports. - Isolated: communicates with promiscuous only.- Promiscuous: communicates with all ports.",
+                  "references": []
+                },
+                {
+                  "ruleId": "10.11",
+                  "title": "Incorrect Default Permissions",
+                  "type": "Elevation of privilege",
+                  "status": "Open",
+                  "severity": "Medium",
+                  "description": "The software, upon installation, sets incorrect permissions for an object that exposes it to an unintended actor [94].",
+                  "mitigation": "To mitigate the threat of default permissions the settings, management and handling of privileges should be carefully managed [94].",
+                  "references": [
+                    {
+                      "name": "CWE-276: Incorrect Default Permissions",
+                      "link": "https://cwe.mitre.org/data/definitions/276.html"
+                    }
+                  ]
+                },
+                {
+                  "ruleId": "8.2",
+                  "title": "Insufficient Logging ",
+                  "type": "Repudiation",
+                  "status": "Open",
+                  "severity": "Medium",
+                  "description": "When a security-critical event occurs, the software either does not record the event or omits important details about the event when logging it.",
+                  "mitigation": "To mitigate this threat, there are 2countermeasures that can be implemented. Firstly,logging should be centralized with different levels of details. However, in a production environment there should be sufficient logging to allow system administrators to see attacks, diagnose and recover from errors.",
+                  "references": [
+                    {
+                      "name": "CWE-778: Insufficient Logging",
+                      "link": "https://cwe.mitre.org/data/definitions/778.html"
+                    }
+                  ],
+                  "examples": [
+                    {
+                      "language": {
+                        "name": "Markup",
+                        "highlightAlias": "markup"
+                      },
+                      "preText": "The example below shows a configuration for the service security audit feature in the Windows Communication Foundation (WCF).",
+                      "postText": "The previous configuration file has effectively disabled the recording of security-critical events, which would force the administrator to look to other sources during debug or recovery efforts.",
+                      "code": "<system.serviceModel>\n<behaviors>\n<serviceBehaviors>\n<behavior name=\"NewBehavior\">\n<serviceSecurityAudit auditLogLocation=\"Default\"\nsuppressAuditFailure=\"false\"\nserviceAuthorizationAuditLevel=\"None\"\nmessageAuthenticationAuditLevel=\"None\" />\n\n...\n</system.serviceModel>"
+                    },
+                    {
+                      "language": {
+                        "name": "Markup",
+                        "highlightAlias": "markup"
+                      },
+                      "preText": "Logging failed authentication attempts can warn administrators of potential brute force attacks. Similarly, logging successful authentication events can provide a useful audit trail when a legitimate account is compromised. The following configuration shows appropriate settings, assuming that the site does not have excessive traffic, which could fill the logs if there are a large number of success or failure events.",
+                      "code": "<system.serviceModel>\n<behaviors>\n<serviceBehaviors>\n<behavior name=\"NewBehavior\">\n<serviceSecurityAudit auditLogLocation=\"Default\"\nsuppressAuditFailure=\"false\"\nserviceAuthorizationAuditLevel=\"SuccessAndFailure\"\nmessageAuthenticationAuditLevel=\"SuccessAndFailure\" />\n\n...\n</system.serviceModel>"
+                    }
+                  ]
+                }
+              ],
+              "privilegeLevelForProcess": true,
               "isEncryptedProcess": false,
               "programmingLanguageProcess": false,
               "isAWebApplication": false,
-              "isANetworkSwitch": false,
+              "isANetworkSwitch": true,
               "isARoutingProcess": false,
               "isAWirelessAccessProcess": false,
               "isAConfigurationProcess": false,
               "providesAuthenticationProcess": false,
-              "isALogProcess": false,
+              "isALogProcess": true,
               "usesExternalResourcesProcess": false,
-              "usesResourcesDirectlyProcess": false,
+              "usesResourcesDirectlyProcess": true,
               "validatesCertProcess": false,
               "localAccessProcess": false,
               "validatesInputProcess": false,
@@ -61,13 +141,13 @@
               "thirdPartyProcess": false,
               "attrs": {
                 ".element-shape": {
-                  "class": "element-shape hasNoOpenThreats isInScope"
+                  "class": "element-shape hasOpenThreats isInScope"
                 },
                 "text": {
                   "text": "CISCO CatL2\nAccess Switch"
                 },
                 ".element-text": {
-                  "class": "element-text hasNoOpenThreats isInScope"
+                  "class": "element-text hasOpenThreats isInScope"
                 }
               }
             },
