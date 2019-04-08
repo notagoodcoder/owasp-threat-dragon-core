@@ -128,7 +128,7 @@ function ThreatReport($scope, $location, $routeParams, $timeout, dialogs, common
 
         var docDefinition = {
             content: [
-                {text: 'Threat Report From OWASP Threat Dragon', style: 'header', decoration: 'underline'},
+                {text: 'Threat Report From\nOWASP Threat Dragon', style: 'header', decoration: 'underline'},
                 {table: {
                     headerRows: 1,
                     body: [
@@ -141,7 +141,7 @@ function ThreatReport($scope, $location, $routeParams, $timeout, dialogs, common
                     fontSize: 30,
                     alignment: "center",
                     bold: true,
-                    color: "#ff7742",
+                    color: "#000000",
                 },
                 tg: {
                     fontSize: 14,
