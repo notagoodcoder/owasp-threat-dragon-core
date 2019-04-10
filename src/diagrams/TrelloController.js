@@ -4,8 +4,8 @@ var _ = require('lodash');
 function TrelloController($scope, $window, common) {
 
     var TRELLO = require("trello");
-    var key = 'b82c0df7859c4b1d0d96a1840f1333fd';
-    var token = '1540b46b2a759ab55ec0f4485b2861bc9be1e71a3101945e7aae73b335a7f06a';
+    var key = 'ad45511c1d9c9c7290bbf4d51da60443';
+    var token = 'dfc6c26108d630efc07d9f23f9bed1f1c109f27b6ac0933afe0deb369ab2db5b';
     var trello = new TRELLO(key, token);
     var getLogFn = common.logger.getLogFn;
     var log = getLogFn('TrelloController');
