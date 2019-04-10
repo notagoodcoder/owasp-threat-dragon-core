@@ -999,7 +999,7 @@ angular.module('templates', [])
     '        <h3>{{parameter.heading}}</h3>\n' +
     '    </div>\n' +
     '    <div class="modal-body">\n' +
-    '        <form name="newExampleForm">\n' +
+    '        <form name="newReferenceForm">\n' +
     '            <div class="form-group">\n' +
     '                <label>Reference title</label>\n' +
     '                <textarea name="preTextInput" ng-model="parameter.reference.name" class="form-control" rows="5" placeholder="Reference title"></textarea>\n' +
@@ -1007,7 +1007,7 @@ angular.module('templates', [])
     '            <div class="form-group">\n' +
     '                <label>Reference link</label>\n' +
     '                <input type="text" name="codeInput" ng-pattern="parameter.regex" ng-model="parameter.reference.link" ng-required="true" class="form-control" rows="5" placeholder="Link to the reference">\n' +
-    '                <div ng-show="!newExampleForm.codeInput.$valid && newExampleForm.codeInput.$dirty">\n' +
+    '                <div ng-show="!newReferenceForm.codeInput.$valid && newReferenceForm.codeInput.$dirty">\n' +
     '                    <p>\n' +
     '                        <div class="alert alert-danger" role="alert">\n' +
     '                            <span class="glyphicon glyphicon-exclamation-sign" aria-hidden="true"></span>\n' +
@@ -1020,7 +1020,7 @@ angular.module('templates', [])
     '        </form>\n' +
     '    </div>\n' +
     '    <div class="modal-footer">\n' +
-    '        <button class="btn btn-primary" ng-disabled="!newExampleForm.$dirty || !newExampleForm.$valid" ng-click="onOK()">Save Example</button>\n' +
+    '        <button class="btn btn-primary" ng-disabled="!newReferenceForm.$dirty || !newReferenceForm.$valid" ng-click="onOK()">Save Reference</button>\n' +
     '        <button class="btn btn-default" ng-click="onCancel()">Cancel</button>\n' +
     '    </div>\n' +
     '</div>\n' +
@@ -1252,22 +1252,22 @@ angular.module('templates', [])
     '                <tr>\n' +
     '                    <th>No.</th>\n' +
     '                    <th ng-click="vm.sort(\'name\')">COMPONENT\n' +
-    '                        <span class="glyphicon sort-icon" ng-show="vm.sortKey==\'name\'" ng-class="{\'glyphicon-chevron-up\':vm.reverse,\'glyphicon-chevron-down\':!vm.reverse}"></span>\n' +
+    '                        <span class="glyphicon sort-icon" ng-show="vm.sortKey==\'name\'" ng-class="{\'glyphicon-chevron-up\':!vm.reverse,\'glyphicon-chevron-down\':vm.reverse}"></span>\n' +
     '                    </th>\n' +
     '                    <th ng-click="vm.sort(\'title\')">TITLE\n' +
-    '                        <span class="glyphicon sort-icon" ng-show="vm.sortKey==\'title\'" ng-class="{\'glyphicon-chevron-up\':vm.reverse,\'glyphicon-chevron-down\':!vm.reverse}"></span>\n' +
+    '                        <span class="glyphicon sort-icon" ng-show="vm.sortKey==\'title\'" ng-class="{\'glyphicon-chevron-up\':!vm.reverse,\'glyphicon-chevron-down\':vm.reverse}"></span>\n' +
     '                    </th>\n' +
     '                    <th ng-click="vm.sort(\'type\')">THREAT TYPE\n' +
-    '                        <span class="glyphicon sort-icon" ng-show="vm.sortKey==\'type\'" ng-class="{\'glyphicon-chevron-up\':vm.reverse,\'glyphicon-chevron-down\':!vm.reverse}"></span>\n' +
+    '                        <span class="glyphicon sort-icon" ng-show="vm.sortKey==\'type\'" ng-class="{\'glyphicon-chevron-up\':!vm.reverse,\'glyphicon-chevron-down\':vm.reverse}"></span>\n' +
     '                    </th>\n' +
     '                    <th ng-click="vm.sort(\'description\')">DESCRIPTION\n' +
-    '                        <span class="glyphicon sort-icon" ng-show="vm.sortKey==\'description\'" ng-class="{\'glyphicon-chevron-up\':vm.reverse,\'glyphicon-chevron-down\':!vm.reverse}"></span>\n' +
+    '                        <span class="glyphicon sort-icon" ng-show="vm.sortKey==\'description\'" ng-class="{\'glyphicon-chevron-up\':!vm.reverse,\'glyphicon-chevron-down\':vm.reverse}"></span>\n' +
     '                    </th>\n' +
     '                    <th ng-click="vm.sort(\'status\')">STATUS\n' +
-    '                        <span class="glyphicon sort-icon" ng-show="vm.sortKey==\'status\'" ng-class="{\'glyphicon-chevron-up\':vm.reverse,\'glyphicon-chevron-down\':!vm.reverse}"></span>\n' +
+    '                        <span class="glyphicon sort-icon" ng-show="vm.sortKey==\'status\'" ng-class="{\'glyphicon-chevron-up\':!vm.reverse,\'glyphicon-chevron-down\':vm.reverse}"></span>\n' +
     '                    </th>\n' +
     '                    <th ng-click="vm.sort(\'severity\')">SEVERITY\n' +
-    '                        <span class="glyphicon sort-icon" ng-show="vm.sortKey==\'severity\'" ng-class="{\'glyphicon-chevron-up\':vm.reverse,\'glyphicon-chevron-down\':!vm.reverse}"></span>\n' +
+    '                        <span class="glyphicon sort-icon" ng-show="vm.sortKey==\'severity\'" ng-class="{\'glyphicon-chevron-up\':!vm.reverse,\'glyphicon-chevron-down\':vm.reverse}"></span>\n' +
     '                    </th>\n' +
     '                </tr>\n' +
     '            </thead>\n' +
@@ -1331,22 +1331,22 @@ angular.module('templates', [])
     '            <tr>\n' +
     '                <th>No.</th>\n' +
     '                <th ng-click="vm.sort(\'name\')">COMPONENT\n' +
-    '                    <span class="glyphicon sort-icon" ng-show="vm.sortKey==\'name\'" ng-class="{\'glyphicon-chevron-up\':vm.reverse,\'glyphicon-chevron-down\':!vm.reverse}"></span>\n' +
+    '                    <span class="glyphicon sort-icon" ng-show="vm.sortKey==\'name\'" ng-class="{\'glyphicon-chevron-up\':!vm.reverse,\'glyphicon-chevron-down\':vm.reverse}"></span>\n' +
     '                </th>\n' +
     '                <th ng-click="vm.sort(\'title\')">TITLE\n' +
-    '                    <span class="glyphicon sort-icon" ng-show="vm.sortKey==\'title\'" ng-class="{\'glyphicon-chevron-up\':vm.reverse,\'glyphicon-chevron-down\':!vm.reverse}"></span>\n' +
+    '                    <span class="glyphicon sort-icon" ng-show="vm.sortKey==\'title\'" ng-class="{\'glyphicon-chevron-up\':!vm.reverse,\'glyphicon-chevron-down\':vm.reverse}"></span>\n' +
     '                </th>\n' +
     '                <th ng-click="vm.sort(\'type\')">THREAT TYPE\n' +
-    '                    <span class="glyphicon sort-icon" ng-show="vm.sortKey==\'type\'" ng-class="{\'glyphicon-chevron-up\':vm.reverse,\'glyphicon-chevron-down\':!vm.reverse}"></span>\n' +
+    '                    <span class="glyphicon sort-icon" ng-show="vm.sortKey==\'type\'" ng-class="{\'glyphicon-chevron-up\':!vm.reverse,\'glyphicon-chevron-down\':vm.reverse}"></span>\n' +
     '                </th>\n' +
     '                <th ng-click="vm.sort(\'mitigation\')">MITIGATION\n' +
-    '                    <span class="glyphicon sort-icon" ng-show="vm.sortKey==\'mitigation\'" ng-class="{\'glyphicon-chevron-up\':vm.reverse,\'glyphicon-chevron-down\':!vm.reverse}"></span>\n' +
+    '                    <span class="glyphicon sort-icon" ng-show="vm.sortKey==\'mitigation\'" ng-class="{\'glyphicon-chevron-up\':!vm.reverse,\'glyphicon-chevron-down\':vm.reverse}"></span>\n' +
     '                </th>\n' +
     '                <th ng-click="vm.sort(\'status\')">STATUS\n' +
-    '                    <span class="glyphicon sort-icon" ng-show="vm.sortKey==\'status\'" ng-class="{\'glyphicon-chevron-up\':vm.reverse,\'glyphicon-chevron-down\':!vm.reverse}"></span>\n' +
+    '                    <span class="glyphicon sort-icon" ng-show="vm.sortKey==\'status\'" ng-class="{\'glyphicon-chevron-up\':!vm.reverse,\'glyphicon-chevron-down\':vm.reverse}"></span>\n' +
     '                </th>\n' +
     '                <th ng-click="vm.sort(\'severity\')">SEVERITY\n' +
-    '                    <span class="glyphicon sort-icon" ng-show="vm.sortKey==\'severity\'" ng-class="{\'glyphicon-chevron-up\':vm.reverse,\'glyphicon-chevron-down\':!vm.reverse}"></span>\n' +
+    '                    <span class="glyphicon sort-icon" ng-show="vm.sortKey==\'severity\'" ng-class="{\'glyphicon-chevron-up\':!vm.reverse,\'glyphicon-chevron-down\':vm.reverse}"></span>\n' +
     '                </th>\n' +
     '            </tr>\n' +
     '            </thead>\n' +

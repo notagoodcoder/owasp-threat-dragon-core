@@ -3,7 +3,7 @@
         <h3>{{parameter.heading}}</h3>
     </div>
     <div class="modal-body">
-        <form name="newExampleForm">
+        <form name="newReferenceForm">
             <div class="form-group">
                 <label>Reference title</label>
                 <textarea name="preTextInput" ng-model="parameter.reference.name" class="form-control" rows="5" placeholder="Reference title"></textarea>
@@ -11,7 +11,7 @@
             <div class="form-group">
                 <label>Reference link</label>
                 <input type="text" name="codeInput" ng-pattern="parameter.regex" ng-model="parameter.reference.link" ng-required="true" class="form-control" rows="5" placeholder="Link to the reference">
-                <div ng-show="!newExampleForm.codeInput.$valid && newExampleForm.codeInput.$dirty">
+                <div ng-show="!newReferenceForm.codeInput.$valid && newReferenceForm.codeInput.$dirty">
                     <p>
                         <div class="alert alert-danger" role="alert">
                             <span class="glyphicon glyphicon-exclamation-sign" aria-hidden="true"></span>
@@ -24,7 +24,7 @@
         </form>
     </div>
     <div class="modal-footer">
-        <button class="btn btn-primary" ng-disabled="!newExampleForm.$dirty || !newExampleForm.$valid" ng-click="onOK()">Save Example</button>
+        <button class="btn btn-primary" ng-disabled="!newReferenceForm.$dirty || !newReferenceForm.$valid" ng-click="onOK()">Save Reference</button>
         <button class="btn btn-default" ng-click="onCancel()">Cancel</button>
     </div>
 </div>
