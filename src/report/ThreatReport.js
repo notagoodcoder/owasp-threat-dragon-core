@@ -161,11 +161,11 @@ function ThreatReport($scope, $location, $routeParams, $timeout, dialogs, common
             }
         };
 
-        var j=0;
+        var j = 0;
         var colour;
         elements.forEach(function(element, i){
-            if(element.threats == undefined || element.threats.length == 0) {
-                if(++j %2 == 0){
+            if(element.threats === undefined || element.threats.length === 0) {
+                if(++j %2 === 0){
                     colour="overEasy";
                 } else{
                     colour="easy";
@@ -186,12 +186,12 @@ function ThreatReport($scope, $location, $routeParams, $timeout, dialogs, common
 
                 element.threats.forEach(function(threat, k){
                     //dont print the first element
-                    if(++j % 2 == 0) {
+                    if(++j % 2 === 0) {
                         colour = "overEasy";
                     } else {
                         colour = "easy";
                     }
-                    if (k==0){
+                    if (k === 0){
                         docDefinition.content[1].table.body.push([{
                             rowSpan: element.threats.length,
                             text: i+1
@@ -216,7 +216,7 @@ function ThreatReport($scope, $location, $routeParams, $timeout, dialogs, common
                         }]);
                         //log(docDefinition.content[1].table.body[docDefinition.content[1].table.body.length-1]+ "and Elements length "+ element.threats.length+1);
                     }
-                    else if (k!=0) {
+                    else if (k !== 0) {
                         docDefinition.content[1].table.body.push(["", "",
                         {
                             text: threat.title,
